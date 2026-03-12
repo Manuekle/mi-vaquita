@@ -91,7 +91,7 @@ export default function HomePage() {
     : productos.filter(p => p.categoria === categoriaSeleccionada);
 
   return (
-    <div className="relative min-h-screen bg-[#F2ECE1] overflow-x-hidden">
+    <div className="relative min-h-screen bg-[#F2ECE1] overflow-x-hidden hardware-accelerated">
       {/* ── Hero ── */}
       <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-12 overflow-hidden px-6">
         <div className="container mx-auto flex flex-col items-center text-center z-10">
@@ -157,7 +157,7 @@ export default function HomePage() {
       {/* ── Collection ── */}
       <section
         id="coleccion"
-        className="relative py-32 bg-white rounded-t-[4rem] z-20 shadow-[0_-20px_60px_-15px_rgba(0,0,0,0.05)]"
+        className="relative py-32 bg-white rounded-t-[4rem] z-20 shadow-[0_-20px_60px_-15px_rgba(0,0,0,0.05)] hardware-accelerated"
         style={{ scrollMarginTop: "80px" }}
       >
         <div className="container mx-auto px-6">
