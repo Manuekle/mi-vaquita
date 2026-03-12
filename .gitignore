@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+.next/
+dist/
+build/
+
+# Environment
+.env*
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
