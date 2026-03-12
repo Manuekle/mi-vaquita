@@ -29,6 +29,9 @@ async function fetchApi<T>(endpoint: string, options?: RequestInit): Promise<Api
 export interface CreatePedidoInput {
   nombre_cliente: string;
   telefono: string;
+  sede: 'campanario' | 'lacteos_colombia';
+  tipo_entrega: 'recoger' | 'domicilio';
+  direccion?: string;
   items: Array<{
     producto_id: string;
     cantidad: number;

@@ -16,6 +16,7 @@ export interface UserProfile {
   email?: string;
   name?: string;
   avatar_url?: string;
+  has_purchase?: boolean;
 }
 
 interface UserStore {
@@ -40,6 +41,7 @@ interface UserStore {
   // Auth (Optional)
   user: UserProfile | null;
   setUser: (user: UserProfile | null) => void;
+  setHasPurchase: (val: boolean) => void;
 }
 
 export const useUserStore = create<UserStore>()(
@@ -106,6 +108,13 @@ export const useUserStore = create<UserStore>()(
 
       removeActiveOrder: (id) => {
         set({ activeOrderIds: get().activeOrderIds.filter(oid => oid !== id) });
+      },
+
+      setHasPurchase: (val: boolean) => {
+        const user = get().user;
+        if (user) {
+          set({ user: { ...user, has_purchase: val } });
+        }
       },
 
       setUser: (user) => set({ user }),

@@ -14,6 +14,9 @@ export interface PedidoItemInput {
 export interface CreatePedidoInput {
   nombre_cliente: string;
   telefono: string;
+  sede: 'campanario' | 'lacteos_colombia';
+  tipo_entrega: 'recoger' | 'domicilio';
+  direccion?: string;
   items: PedidoItemInput[];
 }
 

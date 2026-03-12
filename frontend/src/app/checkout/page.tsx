@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { Loader2, ArrowLeft, ArrowRight, ShoppingBag, User, Phone, CheckCircle } from "lucide-react";
 import { Wallet, IdentificationBadge } from "@phosphor-icons/react";
 import Link from "next/link";
@@ -15,6 +15,7 @@ import { CartItem } from "@/types";
 
 export default function CheckoutPage() {
   const router = useRouter();
+  const { user } = useUserStore();
   const { items, clearCart, getTotal } = useCartStore();
   const total = getTotal();
   const [loading, setLoading] = useState(false);
@@ -22,7 +23,10 @@ export default function CheckoutPage() {
   
   const [formData, setFormData] = useState({
     nombre_cliente: "",
-    telefono: ""
+    telefono: "",
+    sede: "lacteos_colombia" as "lacteos_colombia" | "campanario",
+    tipo_entrega: "recoger" as "recoger" | "domicilio",
+    direccion: ""
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -39,12 +43,20 @@ export default function CheckoutPage() {
       return;
     }
 
+    if (formData.tipo_entrega === "domicilio" && formData.direccion.length < 5) {
+      setError("Por favor ingresa una dirección de entrega válida");
+      return;
+    }
+
     setLoading(true);
 
     try {
       const pedidoData = {
         nombre_cliente: formData.nombre_cliente,
         telefono: formData.telefono,
+        sede: formData.sede,
+        tipo_entrega: formData.tipo_entrega,
+        direccion: formData.tipo_entrega === "domicilio" ? formData.direccion : undefined,
         items: items.map((item: CartItem) => ({
           producto_id: item.producto_id,
           cantidad: item.cantidad
@@ -63,6 +75,9 @@ export default function CheckoutPage() {
           message: `Tu pedido #${response.data.turno || ''} ha sido recibido. Te avisaremos cuando esté listo.`,
           type: 'order_status'
         });
+        if (user) {
+          useUserStore.getState().setHasPurchase(true);
+        }
 
         clearCart();
         router.push(`/pedido/${response.data.id}`);
@@ -172,6 +187,79 @@ export default function CheckoutPage() {
                     required
                   />
                 </div>
+
+                <div className="space-y-4">
+                  <Label className="text-[10px] font-black uppercase tracking-[0.3em] text-dark/40 ml-1">
+                    Punto de Recogida / Sede
+                  </Label>
+                  <div className="grid grid-cols-2 gap-4">
+                    {[
+                      { id: "lacteos_colombia", label: "Lácteos Colombia" },
+                      { id: "campanario", label: "Campanario" }
+                    ].map((sede) => (
+                      <button
+                        key={sede.id}
+                        type="button"
+                        onClick={() => setFormData({ ...formData, sede: sede.id as any })}
+                        className={`h-14 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all border-2 ${
+                          formData.sede === sede.id 
+                            ? "bg-dark text-white border-dark" 
+                            : "bg-accent/5 text-dark/40 border-transparent hover:border-dark/10"
+                        }`}
+                      >
+                        {sede.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <Label className="text-[10px] font-black uppercase tracking-[0.3em] text-dark/40 ml-1">
+                    Método de Entrega
+                  </Label>
+                  <div className="grid grid-cols-2 gap-4">
+                    {[
+                      { id: "recoger", label: "Recoger en Tienda" },
+                      { id: "domicilio", label: "Domicilio" }
+                    ].map((tipo) => (
+                      <button
+                        key={tipo.id}
+                        type="button"
+                        onClick={() => setFormData({ ...formData, tipo_entrega: tipo.id as any })}
+                        className={`h-14 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all border-2 ${
+                          formData.tipo_entrega === tipo.id 
+                            ? "bg-dark text-white border-dark" 
+                            : "bg-accent/5 text-dark/40 border-transparent hover:border-dark/10"
+                        }`}
+                      >
+                        {tipo.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <AnimatePresence>
+                  {formData.tipo_entrega === "domicilio" && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="space-y-4 overflow-hidden"
+                    >
+                      <Label htmlFor="direccion" className="text-[10px] font-black uppercase tracking-[0.3em] text-dark/40 ml-1">
+                        Dirección de Entrega
+                      </Label>
+                      <Input
+                        id="direccion"
+                        placeholder="CALLE, CARRERA, BARRIO, APTO"
+                        value={formData.direccion}
+                        onChange={(e) => setFormData({ ...formData, direccion: e.target.value.toUpperCase() })}
+                        className="h-16 px-6 rounded-2xl bg-accent/5 border-transparent text-base font-black tracking-widest uppercase focus:bg-white focus:border-primary/20 transition-all"
+                        required={formData.tipo_entrega === "domicilio"}
+                      />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
 
               {error && (

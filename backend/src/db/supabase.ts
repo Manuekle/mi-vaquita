@@ -43,6 +43,9 @@ export interface Pedido {
   telefono: string;
   estado: string;
   turno: number | null;
+  sede: 'campanario' | 'lacteos_colombia';
+  tipo_entrega: 'recoger' | 'domicilio';
+  direccion?: string;
   total: number;
   created_at: string;
   updated_at: string;
@@ -61,6 +64,7 @@ export interface Turno {
   id: string;
   numero: number;
   pedido_id: string | null;
+  sede: 'campanario' | 'lacteos_colombia';
   estado: string;
   created_at: string;
 }

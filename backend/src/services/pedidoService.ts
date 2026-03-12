@@ -49,6 +49,9 @@ export const pedidoService = {
       .insert({
         nombre_cliente: input.nombre_cliente,
         telefono: input.telefono,
+        sede: input.sede,
+        tipo_entrega: input.tipo_entrega,
+        direccion: input.direccion,
         estado: 'pendiente',
         total
       })
@@ -71,8 +74,8 @@ export const pedidoService = {
 
     if (itemsError) throw new Error(itemsError.message);
 
-    // Asignar turno
-    const numeroTurno = await turnoService.crearTurno(pedido.id);
+    // Asignar turno en la sede correspondiente
+    const numeroTurno = await turnoService.crearTurno(pedido.sede, pedido.id);
 
     // Actualizar pedido con turno
     const { data: pedidoActualizado } = await supabase

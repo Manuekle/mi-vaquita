@@ -59,6 +59,7 @@ function CardSkeleton({ offset = false }: { offset?: boolean }) {
 }
 
 export default function HomePage() {
+  const { user } = useUserStore();
   const [productos, setProductos] = useState<Producto[]>([]);
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("todos");
   const [loading, setLoading] = useState(true);
@@ -129,7 +130,7 @@ export default function HomePage() {
             Repostería de autor para quienes buscan el arte en cada bocado.
           </motion.p>
 
-          <LoyaltySnippet />
+          {user && user.has_purchase && <LoyaltySnippet />}
 
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -311,8 +312,9 @@ export default function HomePage() {
           <div className="grid md:grid-cols-3 gap-16">
             {[
               { icon: Clock, label: "Horario", val: "8 AM — 8 PM", sub: "Todos los días" },
-              { icon: MapPin, label: "Espacio", val: "Popayán", sub: "Barrio Centro" },
-              { icon: Phone, label: "Contacto", val: "300 123 4567", sub: "Consultas Directas" },
+              { icon: MapPin, label: "Sede Principal", val: "Lácteos Colombia", sub: "Cra 6 # 45N - 41, Popayán" },
+              { icon: MapPin, label: "Sede Campanario", val: "C.C. Campanario", sub: "Local 31C" },
+              { icon: Phone, label: "Contacto", val: "316 555 6007", sub: "Atención Directa" },
             ].map(({ icon: Icon, label, val, sub }, i) => (
               <motion.div
                 key={label}
@@ -327,8 +329,8 @@ export default function HomePage() {
                 </div>
                 <div>
                   <span className="text-[9px] font-black uppercase tracking-widest text-dark/30 block mb-2">{label}</span>
-                  <p className="text-2xl font-black tracking-tighter text-dark mb-1">{val}</p>
-                  <p className="text-xs font-bold text-primary">{sub}</p>
+                  <p className="text-xl font-black tracking-tighter text-dark mb-1">{val}</p>
+                  <p className="text-[10px] font-bold text-primary">{sub}</p>
                 </div>
               </motion.div>
             ))}
@@ -357,13 +359,20 @@ export default function HomePage() {
             <div className="flex flex-col gap-4 items-end">
               <span className="text-[9px] font-black uppercase tracking-[0.5em] text-white/20">Síguenos</span>
               <div className="flex gap-8">
-                {["Instagram", "WhatsApp", "Facebook"].map((s) => (
-                  <span
-                    key={s}
+                {[
+                  { name: "Instagram", url: "https://www.instagram.com/mivaquita81/?hl=es-la" },
+                  { name: "WhatsApp", url: "https://wa.me/573165556007" },
+                  { name: "Facebook", url: "https://www.facebook.com/p/Mi-Vaquita-desde-1981-100069692736979/?locale=es_LA" }
+                ].map((s) => (
+                  <a
+                    key={s.name}
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-[10px] font-black uppercase tracking-widest text-white/50 hover:text-white transition-colors cursor-pointer"
                   >
-                    {s}
-                  </span>
+                    {s.name}
+                  </a>
                 ))}
               </div>
             </div>

@@ -31,6 +31,9 @@ export interface Pedido {
   telefono: string;
   estado: string;
   turno: number | null;
+  sede: 'campanario' | 'lacteos_colombia';
+  tipo_entrega: 'recoger' | 'domicilio';
+  direccion?: string;
   total: number;
   created_at: string;
   items: PedidoItem[];

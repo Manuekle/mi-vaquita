@@ -4,15 +4,15 @@ import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 
 export const metadata: Metadata = {
-  title: "Mi Vaquita — Studio Artesanal | Repostería de Autor en Popayán",
+  title: "Mi Vaquita | Repostería de Autor en Popayán",
   description: "Descubre Mi Vaquita, repostería de autor en Popayán donde el diseño se une con el sabor artesanal. Reserva tu pedido hoy y vive una experiencia única.",
-  keywords: ["repostería", "artesanal", "Popayán", "tortas", "cupcakes", "galletas", "diseño", "Mi Vaquita"],
+  keywords: ["repostería artesanal Popayán", "tortas personalizadas", "diseño de repostería", "Mi Vaquita Popayán", "C.C. Campanario", "repostería de autor"],
   authors: [{ name: "Mi Vaquita Studio" }],
-  metadataBase: new URL("https://mivaquita.com"), // Ajustar a la URL real cuando se despliegue
+  metadataBase: new URL("https://mi-vaquita-popayan.vercel.app"),
   openGraph: {
-    title: "Mi Vaquita — Studio Artesanal",
+    title: "Mi Vaquita",
     description: "Repostería de autor en Popayán. Arte en cada bocado.",
-    url: "https://mivaquita.com",
+    url: "https://mi-vaquita-popayan.vercel.app",
     siteName: "Mi Vaquita",
     locale: "es_CO",
     type: "website",
