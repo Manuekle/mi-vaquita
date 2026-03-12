@@ -43,8 +43,11 @@ export default function TurnosPage() {
         <div className="text-center mb-24 flex flex-col items-center">
           <motion.div
             initial={{ scale: 0, rotate: -180 }}
-            animate={{ scale: 1, rotate: 0 }}
-            transition={{ type: "spring", stiffness: 100, damping: 20 }}
+            animate={{ scale: 1, rotate: 360 }}
+            transition={{ 
+              rotate: { duration: 60, repeat: Infinity, ease: "linear" },
+              scale: { type: "spring", stiffness: 100, damping: 20 }
+            }}
             className="w-32 md:w-40 flex items-center justify-center mb-10 group overflow-hidden bg-transparent"
           >
             <Image 
@@ -85,8 +88,8 @@ export default function TurnosPage() {
               >
                 <motion.div
                   animate={{ rotate: 360 }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                  className="h-16 w-16 rounded-full border-t-2 border-primary"
+                  transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                  className="h-16 w-16 rounded-full border-2 border-dark/5 border-t-primary"
                 />
                 <span className="text-[10px] font-black uppercase tracking-widest text-dark/20">Consultando...</span>
               </motion.div>
@@ -143,8 +146,16 @@ export default function TurnosPage() {
           </AnimatePresence>
 
           {/* Decorative Back Circles */}
-          <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] aspect-square border border-dark/5 rounded-full" />
-          <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] aspect-square border border-dark/5 rounded-full opacity-50" />
+          <motion.div 
+            animate={{ rotate: 360 }}
+            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+            className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] aspect-square border border-dark/5 rounded-full" 
+          />
+          <motion.div 
+            animate={{ rotate: -360 }}
+            transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+            className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] aspect-square border border-dark/5 rounded-full opacity-50" 
+          />
         </div>
 
         <div className="text-center mt-24">
