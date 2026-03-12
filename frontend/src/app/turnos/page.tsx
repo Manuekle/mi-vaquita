@@ -32,7 +32,7 @@ export default function TurnosPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#F2ECE1] pt-32 pb-24 px-6">
+    <div className="relative min-h-screen bg-[#F2ECE1] pt-32 pb-24 px-6 overflow-hidden">
       <div className="container mx-auto max-w-4xl">
         <Link href="/menu" className="group inline-flex items-center gap-3 text-xs font-black uppercase tracking-widest text-dark/40 hover:text-primary transition-colors mb-12">
           <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" strokeWidth={3} />
@@ -70,7 +70,7 @@ export default function TurnosPage() {
             animate={{ opacity: 1 }}
             className="text-editorial-lg text-dark leading-none uppercase"
           >
-            COLA <br /> VITAL
+            DISPONIBILIDAD <br /> EN TIEMPO REAL
           </motion.h2>
         </div>
 
@@ -157,9 +157,9 @@ export default function TurnosPage() {
           />
         </div>
 
-        <div className="text-center mt-24">
-           <span className="text-[9px] font-black uppercase tracking-widest text-dark/20">Sincronización Automática • Cada 10s</span>
-        </div>
+         <div className="text-center mt-24">
+            <span className="text-[9px] font-black uppercase tracking-widest text-dark/20">Sincronización Automática • 2026 • Popayán</span>
+         </div>
       </div>
     </div>
   );

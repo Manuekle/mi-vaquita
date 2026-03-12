@@ -47,7 +47,7 @@ export default function MenuPage() {
     : productos.filter(p => p.categoria === categoriaSeleccionada);
 
   return (
-    <div className="min-h-screen bg-[#F2ECE1] pt-32 pb-24 px-6 md:px-12">
+    <div className="relative min-h-screen bg-[#F2ECE1] pt-32 pb-24 px-6 md:px-12 overflow-hidden">
       <div className="container mx-auto">
         {/* Header */}
         <div className="flex flex-col md:flex-row items-end justify-between mb-24 gap-12 border-b border-dark/5 pb-16">
@@ -145,7 +145,7 @@ export default function MenuPage() {
         {/* Footer info */}
         <div className="mt-48 flex items-center justify-center gap-4 py-12">
             <div className="h-px flex-1 bg-dark/5" />
-            <span className="text-[9px] font-black uppercase tracking-[0.5em] text-dark/20">Studio • Mi Vaquita • 2024</span>
+            <span className="text-[9px] font-black uppercase tracking-[0.5em] text-dark/20">Studio • Mi Vaquita • 2026</span>
             <div className="h-px flex-1 bg-dark/5" />
         </div>
       </div>

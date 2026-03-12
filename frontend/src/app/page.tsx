@@ -299,7 +299,7 @@ export default function HomePage() {
             <div className="space-y-10">
               <span className="text-[9px] font-black uppercase tracking-[0.5em] text-primary">Filosofía</span>
               <h3 className="text-editorial-md text-dark leading-tight">
-                MÁS QUE REPOSTERÍA, <br /> ES DISEÑO.
+                MÁS QUE REPOSTERÍA, <br /> ES DISEÑO VIVO.
               </h3>
               <p className="text-base text-dark/50 font-bold leading-relaxed">
                 Cada pieza es el resultado de un proceso meticuloso donde la técnica se une con la pasión. No vendemos pasteles; creamos momentos a través de la estética y el sabor.
@@ -382,7 +382,7 @@ export default function HomePage() {
           </div>
           <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between gap-4">
             <span className="text-[9px] font-black uppercase tracking-widest text-white/15">
-              © 2024 Mi Vaquita Studio. Todos los derechos reservados.
+              © 2026 Mi Vaquita Studio. Todos los derechos reservados.
             </span>
             <span className="text-[9px] font-black uppercase tracking-widest text-white/15">
               Diseño & Experiencia Digital.

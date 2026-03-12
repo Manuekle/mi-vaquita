@@ -6,7 +6,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Rutas estáticas
   const routes = [
     '',
-    '/admin', // Aunque sea admin, a veces se indexa, pero usualmente se bloquea en robots.txt
+    '/menu',
+    '/turnos',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
