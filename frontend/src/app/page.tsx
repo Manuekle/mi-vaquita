@@ -91,14 +91,17 @@ export default function HomePage() {
     : productos.filter(p => p.categoria === categoriaSeleccionada);
 
   return (
-    <div className="relative min-h-screen bg-[#F2ECE1]">
+    <div className="relative min-h-screen bg-[#F2ECE1] overflow-x-hidden">
       {/* ── Hero ── */}
       <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-12 overflow-hidden px-6">
         {/* Decorative rings */}
         <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-          className="absolute -top-20 -left-20 w-80 h-80 rounded-full border border-dark/5 pointer-events-none"
+          animate={{ rotate: 360, scale: [1, 1.1, 1] }}
+          transition={{ 
+            rotate: { duration: 40, repeat: Infinity, ease: "linear" },
+            scale: { duration: 15, repeat: Infinity, ease: "easeInOut" }
+          }}
+          className="absolute -top-32 -left-32 w-[30rem] h-[30rem] rounded-full border border-primary/5 pointer-events-none"
         />
         <motion.div
           animate={{ rotate: -360 }}

@@ -58,7 +58,7 @@ export default function MenuPage() {
               className="flex items-center gap-3 mb-6"
             >
               <div className="h-px w-8 bg-primary" />
-              <span className="text-[10px] font-black uppercase tracking-[0.5em] text-primary">Archivo</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.5em] text-primary">La Selección</span>
             </motion.div>
             <h1 className="text-editorial-lg text-dark uppercase leading-none">
               COLECCIÓN <br /> COMPLETA
