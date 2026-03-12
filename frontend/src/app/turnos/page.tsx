@@ -43,19 +43,18 @@ export default function TurnosPage() {
         <div className="text-center mb-24 flex flex-col items-center">
           <motion.div
             initial={{ scale: 0, rotate: -180 }}
-            animate={{ scale: 1, rotate: 360 }}
+            animate={{ scale: 1, rotate: 0 }}
             transition={{ 
-              rotate: { duration: 60, repeat: Infinity, ease: "linear" },
-              scale: { type: "spring", stiffness: 100, damping: 20 }
+              type: "spring", stiffness: 100, damping: 20, delay: 0.1
             }}
-            className="w-32 md:w-40 flex items-center justify-center mb-10 group overflow-hidden bg-transparent"
+            className="w-32 md:w-40 flex items-center justify-center mb-10 overflow-hidden bg-transparent"
           >
             <Image 
               src="/logo.png" 
               alt="Mi Vaquita" 
               width={160} 
               height={160} 
-              className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-110" 
+              className="w-full h-auto object-contain" 
               priority
             />
           </motion.div>
