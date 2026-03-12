@@ -153,7 +153,7 @@ export default function CheckoutPage() {
                     placeholder="LUIS ALBERTO"
                     value={formData.nombre_cliente}
                     onChange={(e) => setFormData({ ...formData, nombre_cliente: e.target.value.toUpperCase() })}
-                    className="h-16 px-6 rounded-2xl bg-accent/5 border-transparent text-sm font-black tracking-widest uppercase focus:bg-white focus:border-primary/20 transition-all font-mono-not-really-just-sans"
+                    className="h-16 px-6 rounded-2xl bg-accent/5 border-transparent text-base font-black tracking-widest uppercase focus:bg-white focus:border-primary/20 transition-all font-mono-not-really-just-sans"
                     required
                   />
                 </div>
@@ -167,7 +167,7 @@ export default function CheckoutPage() {
                     placeholder="300 000 0000"
                     value={formData.telefono}
                     onChange={(e) => setFormData({ ...formData, telefono: e.target.value.replace(/\D/g, "").slice(0, 10) })}
-                    className="h-16 px-6 rounded-2xl bg-accent/5 border-transparent text-sm font-black tracking-widest focus:bg-white focus:border-primary/20 transition-all"
+                    className="h-16 px-6 rounded-2xl bg-accent/5 border-transparent text-base font-black tracking-widest focus:bg-white focus:border-primary/20 transition-all"
                     maxLength={10}
                     required
                   />

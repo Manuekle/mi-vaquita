@@ -78,7 +78,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                       <Input
                         type="email"
                         placeholder="TU@EMAIL.COM"
-                        className="h-14 pl-14 rounded-2xl border-2 border-dark/5 bg-accent/5 pr-6 font-bold text-xs uppercase tracking-widest focus:bg-white focus:border-primary/20 transition-all placeholder:text-dark/10"
+                        className="h-14 pl-14 rounded-2xl border-2 border-dark/5 bg-accent/5 pr-6 font-bold text-base uppercase tracking-widest focus:bg-white focus:border-primary/20 transition-all placeholder:text-dark/10"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
@@ -93,7 +93,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                       <Input
                         type="password"
                         placeholder="••••••••"
-                        className="h-14 pl-14 rounded-2xl border-2 border-dark/5 bg-accent/5 pr-6 font-bold text-xs uppercase tracking-widest focus:bg-white focus:border-primary/20 transition-all placeholder:text-dark/10"
+                        className="h-14 pl-14 rounded-2xl border-2 border-dark/5 bg-accent/5 pr-6 font-bold text-base uppercase tracking-widest focus:bg-white focus:border-primary/20 transition-all placeholder:text-dark/10"
                         required
                       />
                     </div>
