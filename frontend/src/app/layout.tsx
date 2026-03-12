@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "@fontsource-variable/quicksand";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
-import { PageTransition } from "@/components/PageTransition";
 
 export const metadata: Metadata = {
   title: "Mi Vaquita — Studio Artesanal | Repostería de Autor en Popayán",
@@ -43,9 +42,7 @@ export default function RootLayout({
     <html lang="es" suppressHydrationWarning>
       <body suppressHydrationWarning>
         <Navbar />
-        <PageTransition>
-          <main>{children}</main>
-        </PageTransition>
+        <main>{children}</main>
       </body>
     </html>
   );
